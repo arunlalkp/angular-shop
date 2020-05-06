@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent  {
+  public isMenuCollapsed = true; //used to toggle navbar menu on mobile
 
   constructor(public auth:AuthService) {
    }
