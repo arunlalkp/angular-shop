@@ -12,13 +12,15 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BsNavbarComponent,
-    routingComponents
+    routingComponents,
+    ProductFormComponent
 
   ],
   imports: [
