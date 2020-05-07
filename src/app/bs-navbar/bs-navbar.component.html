@@ -25,13 +25,17 @@
           </li>
         </ng-template>
 
-        <li *ngIf="auth.user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown">
+        <li *ngIf="appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
           <a  ngbDropdownToggle class="nav-link dropdown-toggle pointer"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">{{user.displayName }}</a>
+            aria-expanded="false">{{appUser.name }}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/my/orders">My Orders</a>
-            <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-            <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+
+            <ng-container *ngIf="appUser.isAdmin">
+              <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+            </ng-container>
+
             <a (click)="isMenuCollapsed = true" class="dropdown-item pointer" (click)="logout()" >Log Out</a>
           </div>
         </li>
