@@ -15,8 +15,10 @@
             </div>
             <input ngModel #price="ngModel" [class.is-invalid]="price.touched && price.invalid" name="price" id="price" type="number" class="form-control" required>
             <div class="invalid-feedback" *ngIf="price.touched && price.invalid">
-                price is required.
+                <span *ngIf="price.errors.required">price is required.</span>
+                <span *ngIf="price.errors.min">price should be 0 or higher</span>
             </div>
+            <!-- <pre>{{price.errors | json}}</pre> -->
           </div>
           
     </div>
@@ -34,10 +36,11 @@
 
     <div class="form-group">
         <label for="imageUrl">Image URL</label>
-        <input #imageUrl="ngModel" [class.is-invalid]="imageUrl.touched && imageUrl.invalid"  ngModel name="imageUrl" id="imageUrl" class="form-control" type="text" required>
+        <input #imageUrl="ngModel" [class.is-invalid]="imageUrl.touched && imageUrl.invalid"  ngModel name="imageUrl" id="imageUrl" class="form-control" type="text" required >
         <div *ngIf="imageUrl.invalid && imageUrl.touched" class="invalid-feedback">
             Image URL is required
         </div>
+        <!-- <pre>{{ imageUrl.errors | json}}</pre> -->
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>

@@ -8,6 +8,13 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+
+  /**
+   * @TODO 
+   *  * Add custom validations for forms ( n2-validator module is not working properly)
+   */
+
+
   categories$;
 
   constructor(
