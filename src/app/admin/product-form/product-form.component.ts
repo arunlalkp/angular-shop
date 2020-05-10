@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
     title: '',
     category: '',
     imageUrl: '',
-    price:0
+    price: null
   };
   id;
 
