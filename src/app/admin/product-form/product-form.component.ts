@@ -19,6 +19,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$;
   product={};
+  id;
 
   constructor(
     private router: Router,
@@ -28,8 +29,8 @@ export class ProductFormComponent implements OnInit {
 
     this.categories$ = categoryService.getCategories();
 
-    const id = this.route.snapshot.paramMap.get('id')
-    if(id) this.product = this.productService.get(id).pipe(take(1)).subscribe(p => this.product = p )
+    this.id = this.route.snapshot.paramMap.get('id')
+    if(this.id) this.product = this.productService.get(this.id).pipe(take(1)).subscribe(p => this.product = p )
 
   }
 
@@ -38,7 +39,9 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product){
-    this.productService.create(product);
+    if(this.id) this.productService.update(this.id, product);
+    else this.productService.create(product);
+    
     this.router.navigate(['/admin/products'])
   }
 
