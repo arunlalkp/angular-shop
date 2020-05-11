@@ -53,14 +53,7 @@
         <hr>
     </div>
     <div class="col-md-6">
-        <div class="card mb-3">
-            <img [src]="product.imageUrl" class="card-img-top" *ngIf="product.imageUrl">
-            <div class="card-body">
-              <h5 class="card-title">{{ product.title }}</h5>
-              <p class="card-text">{{ product.price | currency }}</p>
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            </div>
-          </div>
+        <product-card [product]="product" [show-actions]="false"></product-card>
     </div>
 </div>
 
