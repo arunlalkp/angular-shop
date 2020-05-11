@@ -7,3 +7,9 @@ body{
 .pointer{
     cursor: pointer;
 }
+
+pre {
+    background-color: rgb(240, 237, 237);
+    padding: 8px;
+    border-radius: 10px;
+}
