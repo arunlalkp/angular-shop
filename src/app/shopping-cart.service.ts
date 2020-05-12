@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { Product } from './models/product';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { ShoppingCartItem } from './models/shopping-cart-item'
 import { ShoppingCart } from './models/shopping-cart';
+import { Observable, pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,11 @@ export class ShoppingCartService {
     })
   }
 
-  async getCart() :Promise<AngularFireObject<ShoppingCart>> {
+  async getCart() :Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId()
-    console.log(`inside getCart -- cartId = ${cartId}`)
-    return this.db.object('/shopping-carts/'+ cartId)
+    // console.log(`inside getCart -- cartId = ${cartId}`)
+    return this.db.object('/shopping-carts/'+ cartId).valueChanges()
+      .pipe(map((x:ShoppingCart) => new ShoppingCart(x.items)))
   }
 
   private getItem(cartId:string, productId:string){
@@ -29,12 +31,30 @@ export class ShoppingCartService {
   }
 
   private async getOrCreateCartId():Promise<string>{
-    let cartId = localStorage.getItem('cartId')
-    if(cartId) return cartId
 
-    let result = await this.create()
-    localStorage.setItem('cartId', result.key)
-    return result.key
+    /**
+     * @BUG____________________________________________
+     * @TODO ** BUG ** Two CartIDs are created on start 
+     * @BUG____________________________________________
+
+     */
+
+    console.log(`get or create cart ID`)
+    let cartId = localStorage.getItem('cartId')
+    console.log(`cartID from local -- ${cartId}`)
+
+    if(cartId) {
+      return cartId 
+    } 
+    else{
+      let result = await this.create()
+      console.log(`no local cartID, so new CArtID = - ${result.key}`)
+      localStorage.setItem('cartId', result.key)
+      return result.key
+    }
+
+    
+    
    
   }
 

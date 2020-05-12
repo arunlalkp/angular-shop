@@ -5,6 +5,7 @@ import { Product } from '../models/product';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Subscription } from 'rxjs';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-products',
@@ -42,8 +43,10 @@ export class ProductsComponent  implements OnInit, OnDestroy{
   }
 
   async ngOnInit(){
-    this.subscription = (await this.shoppingCartService.getCart()).valueChanges()
-      .subscribe(cart => {
+    console.log(`Inside onInit on product.component.ts`)
+    this.subscription = (await this.shoppingCartService.getCart())
+      .subscribe((cart:ShoppingCart) => {
+        console.log(`inside subscription`)
         console.log(cart)
         this.cart = cart
       })
