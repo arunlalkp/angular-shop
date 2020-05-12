@@ -39,16 +39,16 @@ export class ShoppingCartService {
 
      */
 
-    console.log(`get or create cart ID`)
+    // console.log(`get or create cart ID`)
     let cartId = localStorage.getItem('cartId')
-    console.log(`cartID from local -- ${cartId}`)
+    // console.log(`cartID from local -- ${cartId}`)
 
     if(cartId) {
       return cartId 
     } 
     else{
       let result = await this.create()
-      console.log(`no local cartID, so new CArtID = - ${result.key}`)
+      // console.log(`no local cartID, so new CArtID = - ${result.key}`)
       localStorage.setItem('cartId', result.key)
       return result.key
     }
