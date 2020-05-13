@@ -26,6 +26,19 @@ export class ShoppingCartService {
       .pipe(map((x:ShoppingCart) => new ShoppingCart(x.items)))
   }
 
+  async addToCart(product:Product){
+    this.updateItem(product, 1)
+  }
+
+  async removeFromCart(product:Product){
+    this.updateItem(product, -1)
+  }
+
+  async clearCart(){
+    let cartId = await this.getOrCreateCartId()
+    this.db.object('/shopping-carts/' + cartId + '/items').remove()
+  }
+
   private getItem(cartId:string, productId:string){
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId)
   }
@@ -56,14 +69,6 @@ export class ShoppingCartService {
     
     
    
-  }
-
-  async addToCart(product:Product){
-    this.updateItem(product, 1)
-  }
-
-  async removeFromCart(product:Product){
-    this.updateItem(product, -1)
   }
 
   private async updateItem(product:Product, change:number){
