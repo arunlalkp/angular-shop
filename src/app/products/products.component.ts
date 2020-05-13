@@ -4,27 +4,32 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product';
 import { switchMap } from 'rxjs/operators';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { Subscription } from 'rxjs';
 import { ShoppingCart } from '../models/shopping-cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent  implements OnInit, OnDestroy{
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category;
-  cart:any
-  subscription:Subscription
+  cart$: Observable<ShoppingCart>;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private shoppingCartService: ShoppingCartService
-  ) {
-    productService
+  ) {}
+
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
+    this.populateProducts();
+  }
+  private populateProducts() {
+    this.productService
       .getAll()
       .pipe(
         switchMap((product) => {
@@ -34,26 +39,12 @@ export class ProductsComponent  implements OnInit, OnDestroy{
       )
       .subscribe((params) => {
         this.category = params.get('category');
-
-        this.filteredProducts = this.category
-          ? this.products.filter((p) => p.category == this.category)
-          : this.products;
+        this.applyFilter();
       });
-
   }
-
-  async ngOnInit(){
-    console.log(`Inside onInit on product.component.ts`)
-    this.subscription = (await this.shoppingCartService.getCart())
-      .subscribe((cart:ShoppingCart) => {
-        // console.log(`inside subscription`)
-        // console.log(cart)
-        this.cart = cart
-      })
-
-  }
-
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
+  private applyFilter() {
+    this.filteredProducts = this.category
+      ? this.products.filter((p) => p.category == this.category)
+      : this.products;
   }
 }
