@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item';
+import { Product } from './product';
 
 export class ShoppingCart{
     items; // need to add here for avoiding compile error, and this items refres to items in firebase data
@@ -10,6 +11,11 @@ export class ShoppingCart{
             this._items.push(new ShoppingCartItem(item.product, item.quantity))
         }
     }
+
+    getQuantity(product:Product){
+        let item = this.itemsMap[product.key]
+        return item ? item.quantity : 0
+      }
 
     get totalPrice(){
         let sum:number = 0;
