@@ -46,8 +46,8 @@ export class ProductsComponent  implements OnInit, OnDestroy{
     console.log(`Inside onInit on product.component.ts`)
     this.subscription = (await this.shoppingCartService.getCart())
       .subscribe((cart:ShoppingCart) => {
-        console.log(`inside subscription`)
-        console.log(cart)
+        // console.log(`inside subscription`)
+        // console.log(cart)
         this.cart = cart
       })
 
