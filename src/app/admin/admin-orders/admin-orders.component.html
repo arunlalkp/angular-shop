@@ -1,1 +1,21 @@
-<p>admin-orders works!</p>
+<div *ngIf="orders$ | async  as orders">
+    <!-- <pre>{{ orders | json }}</pre> -->
+    <h2>All Orders</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{ order.shipping.name }}</td>
+                <td>{{ order.datePlaced | date}}</td>
+                <td><a routerLink="/order-success/{{order.key}}">view</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
