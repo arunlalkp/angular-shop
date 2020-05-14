@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 import { environment } from 'src/environments/environment';
 
-import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -22,7 +21,6 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     BsNavbarComponent,
     routingComponents,
-    ProductFormComponent,
     ProductFilterComponent,
     
     ShoppingCartSummaryComponent,
