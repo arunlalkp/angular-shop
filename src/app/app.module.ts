@@ -11,9 +11,9 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ShippingFormComponent } from './shipping-form/shipping-form.component';
-import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ProductFilterComponent } from '../app/shopping/components/products/product-filter/product-filter.component';
+import { ShippingFormComponent } from './shopping/components/shipping-form/shipping-form.component';
+import { ShoppingCartSummaryComponent } from './shopping/components/shopping-cart-summary/shopping-cart-summary.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
