@@ -1,6 +1,11 @@
 .thumbnail{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     background-size: cover;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    border-top: 0.5px solid #dee2e6;
 }

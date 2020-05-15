@@ -2,6 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
+$primary-color : #28a745;
 
 body{
     padding-top: 80px;
@@ -15,4 +16,10 @@ pre {
     background-color: rgb(240, 237, 237);
     padding: 8px;
     border-radius: 10px;
+}
+
+/* bootstrap overrides */
+.list-group-item.active {
+    background-color: $primary-color;
+    border-color: $primary-color;
 }
