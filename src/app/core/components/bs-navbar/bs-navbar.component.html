@@ -1,29 +1,30 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <a class="navbar-brand" routerLink="/">A SHOP</a>
-    <button 
-      (click)="isMenuCollapsed = !isMenuCollapsed"
-      class="navbar-toggler" 
-      type="button" 
-      data-toggle="collapse" 
-      data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      Cafe Green <i class="fa fa-pagelines text-success" aria-hidden="true"></i>
+    </a>
+    <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
 
-        <li  class="nav-item">
+        
+
+      </ul>
+
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
           <a (click)="isMenuCollapsed = true" class="nav-link" routerLink="/shopping-cart">
-            Cart
-            <span 
-              *ngIf="cart$ | async as cart"
-              class="badge badge-warning badge-pill">{{ cart.totalItemsCount }}</span>
-              <!-- <pre> {{ cart$ | json}}</pre> -->
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill">{{ cart.totalItemsCount }}</span>
+            <!-- <pre> {{ cart$ | json}}</pre> -->
           </a>
         </li>
-
-        
 
         <ng-template #anonymousUser>
           <li class="nav-item">
@@ -32,8 +33,8 @@
         </ng-template>
 
         <li *ngIf="appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
-          <a  ngbDropdownToggle class="nav-link dropdown-toggle pointer"  id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">{{appUser.name }}</a>
+          <a ngbDropdownToggle class="nav-link dropdown-toggle pointer" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">{{appUser.name }}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/my/orders">My Orders</a>
 
@@ -42,10 +43,12 @@
               <a (click)="isMenuCollapsed = true" class="dropdown-item" routerLink="/admin/products">Manage Products</a>
             </ng-container>
 
-            <a (click)="isMenuCollapsed = true" class="dropdown-item pointer" (click)="logout()" >Log Out</a>
+            <a (click)="isMenuCollapsed = true" class="dropdown-item pointer" (click)="logout()">Log Out</a>
           </div>
         </li>
 
       </ul>
     </div>
-  </nav>
+  </div>
+
+</nav>
