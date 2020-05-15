@@ -3,6 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CustomFormsModule } from 'ng2-validation';
 
 
 
@@ -12,11 +18,25 @@ import { ProductQuantityComponent } from './components/product-quantity/product-
     ProductQuantityComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    NgbModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    CustomFormsModule
   ],
   exports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    NgbModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    CustomFormsModule,
+
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
   ]
 })
 export class SharedModule { }

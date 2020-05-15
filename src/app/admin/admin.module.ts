@@ -1,7 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
@@ -17,10 +14,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     AdminProductsComponent,
   ],
   imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    RouterModule
+    SharedModule
   ]
 })
 export class AdminModule { }
