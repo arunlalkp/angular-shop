@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
-import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
-import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
-import { LoginComponent } from './login/login.component';
-import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
-import { ProductsComponent } from './shopping/components/products/products.component'
-import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
-import { AuthGuardService as AuthGuard } from './shared/services/auth-guard.service';
-import { AdminAuthGuardService as AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
+import { AdminAuthGuardService as AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { LoginComponent } from './core/components/login/login.component';
+import { AuthGuardService as AuthGuard } from './shared/services/auth-guard.service';
+import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
+import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
+import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
+import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -49,16 +49,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [
-  HomeComponent,
-  ProductsComponent,
-  ShoppingCartComponent,
-  CheckOutComponent,
-  OrderSuccessComponent,
-  LoginComponent,
-  AdminOrdersComponent,
-  AdminProductsComponent,
-  MyOrdersComponent,
-  ProductFormComponent
-]

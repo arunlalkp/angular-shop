@@ -8,26 +8,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 import { environment } from 'src/environments/environment';
 
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { ProductFilterComponent } from '../app/shopping/components/products/product-filter/product-filter.component';
-import { ShippingFormComponent } from './shopping/components/shipping-form/shipping-form.component';
-import { ShoppingCartSummaryComponent } from './shopping/components/shopping-cart-summary/shopping-cart-summary.component';
 import { SharedModule } from './shared/shared.module';
+import { ShoppingModule } from './shopping/shopping.module';
+import { AdminModule } from './admin/admin.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent,
-    routingComponents,
-    ProductFilterComponent,
-    
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent
-
   ],
   imports: [
+    AdminModule,
+    CoreModule,
+    ShoppingModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,
