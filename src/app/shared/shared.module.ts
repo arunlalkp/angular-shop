@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CustomFormsModule } from 'ng2-validation';
+import { AngularFireMessagingModule } from '@angular/fire/messaging'
 
 
 
@@ -24,7 +25,8 @@ import { CustomFormsModule } from 'ng2-validation';
     NgbModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    CustomFormsModule
+    AngularFireMessagingModule,
+    CustomFormsModule,
   ],
   exports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { CustomFormsModule } from 'ng2-validation';
     NgbModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireMessagingModule,
     CustomFormsModule,
 
     ProductCardComponent,

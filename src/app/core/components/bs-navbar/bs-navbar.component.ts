@@ -4,6 +4,7 @@ import { AppUser } from '../../../shared/models/app-user';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Observable } from 'rxjs';
+import { MessagingService } from 'src/app/shared/services/messaging.service';
 
 @Component({
   selector: 'bs-navbar',
@@ -16,6 +17,7 @@ export class BsNavbarComponent implements OnInit  {
   cart$: Observable<ShoppingCart>  
 
   constructor(
+    private messagingService:MessagingService,
     private auth:AuthService,
     private shoppingCartService:ShoppingCartService
     ) {
@@ -28,7 +30,9 @@ export class BsNavbarComponent implements OnInit  {
     })
 
     this.cart$ = (await this.shoppingCartService.getCart())
-
+    //firebase messaging
+    this.messagingService.requestPremission()
+    this.messagingService.listen() // has no result yet
   }
 
    logout(){
