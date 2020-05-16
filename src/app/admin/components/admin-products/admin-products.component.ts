@@ -9,19 +9,19 @@ import { Product } from '../../../shared/models/product';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-  products:Product[];
-  filteredProducts:any[]
-  subscription:Subscription
-  
+  products: Product[];
+  filteredProducts: any[];
+  subscription: Subscription;
+
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products)
+      .subscribe(products => this.filteredProducts = this.products = products);
    }
 
    filter(query){
-    this.filteredProducts = (query) ? 
+    this.filteredProducts = (query) ?
     this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-    this.products; 
+    this.products;
   }
 
 
@@ -29,10 +29,10 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 
-  
+
 
 
 

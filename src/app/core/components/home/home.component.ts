@@ -8,7 +8,7 @@ import { MessagingService } from 'src/app/shared/services/messaging.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private messagingSevie:MessagingService) { }
+  constructor( private messagingSevie: MessagingService) { }
 
   ngOnInit(): void {
     // this.messagingSevie.requestPremission()

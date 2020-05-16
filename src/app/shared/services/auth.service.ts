@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 import { Observable, of, empty } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from '../models/app-user';
@@ -12,41 +12,41 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<firebase.User>
+  user$: Observable<firebase.User>;
 
   constructor(
     private userService: UserService,
     private afAuth: AngularFireAuth,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router) {
 
-    this.user$ = afAuth.authState
+    this.user$ = afAuth.authState;
    }
 
   login(){
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
-    this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+    this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
   logout(){
-    console.log(`logout`)
-    this.afAuth.signOut()
+    console.log(`logout`);
+    this.afAuth.signOut();
   }
 
-  get appUser$() : Observable<AppUser>{
+  get appUser$(): Observable<AppUser>{
     return this.user$
     .pipe(switchMap(user => {
 
       /**
        * @TODO Return an empty observable if there is no user to solve error while logout
-       * 
+       *
        *  if(user) this.userService.get(user.uid).valueChanges()
        *  return empty()
        */
-     
-      return this.userService.get(user.uid).valueChanges()
-    }))
+
+      return this.userService.get(user.uid).valueChanges();
+    }));
   }
 }

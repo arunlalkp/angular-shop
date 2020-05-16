@@ -35,12 +35,12 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 
   async placeOrder() {
-    let order = new Order(this.userId, this.shipping, this.cart);
-    let result = await this.orderService.storeOrder(order);
+    const order = new Order(this.userId, this.shipping, this.cart);
+    const result = await this.orderService.storeOrder(order);
     console.log(result);
     this.router.navigate(['/order-success', result.key]);
   }

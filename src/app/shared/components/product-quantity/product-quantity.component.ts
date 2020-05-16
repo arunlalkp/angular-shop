@@ -10,11 +10,11 @@ import { ShoppingCart } from '../../models/shopping-cart';
 })
 export class ProductQuantityComponent {
 
-  @Input('product') product:Product
-  @Input('shopping-cart') shoppingCart:ShoppingCart
+  @Input('product') product: Product;
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
 
 
-  constructor(private cartService:ShoppingCartService) { 
+  constructor(private cartService: ShoppingCartService) {
     // console.log(`inside product card comp -- ${this.product}`)
   }
 
@@ -23,10 +23,10 @@ export class ProductQuantityComponent {
   }
 
   removeFromCart(){
-    this.cartService.removeFromCart(this.product)
+    this.cartService.removeFromCart(this.product);
   }
 
-  
+
 
 
 }

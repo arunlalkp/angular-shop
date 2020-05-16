@@ -9,16 +9,16 @@ import { UserService } from './shared/services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, auth:AuthService, router: Router){
-    auth.user$.subscribe(user=> {
-      if(!user) return;
+  constructor(private userService: UserService, auth: AuthService, router: Router){
+    auth.user$.subscribe(user => {
+      if (!user) { return; }
       userService.save(user);
 
-      let returnUrl = localStorage.getItem('returnUrl')
-      if(!returnUrl) returnUrl
+      const returnUrl = localStorage.getItem('returnUrl');
+      if (!returnUrl) { returnUrl; }
       localStorage.removeItem('returnUrl');
-      router.navigateByUrl(returnUrl)
+      router.navigateByUrl(returnUrl);
 
-    })
+    });
   }
 }

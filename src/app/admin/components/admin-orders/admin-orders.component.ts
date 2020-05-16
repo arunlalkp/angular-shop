@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent  {
-  orders$:Observable<any>
+  orders$: Observable<any>;
 
-  constructor(private orderService:OrderService) { 
-    this.orders$ = this.orderService.getOrders()
+  constructor(private orderService: OrderService) {
+    this.orders$ = this.orderService.getOrders();
   }
 
 }

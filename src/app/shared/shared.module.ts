@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CustomFormsModule } from 'ng2-validation';
-import { AngularFireMessagingModule } from '@angular/fire/messaging'
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 
 

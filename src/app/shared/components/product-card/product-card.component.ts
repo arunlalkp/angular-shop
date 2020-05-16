@@ -10,12 +10,12 @@ import { ShoppingCart } from '../../models/shopping-cart';
 })
 export class ProductCardComponent {
 
-  @Input('product') product:Product
-  @Input('show-actions') showActions:boolean = true
-  @Input('shopping-cart') shoppingCart:ShoppingCart
+  @Input('product') product: Product;
+  @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
 
 
-  constructor(private cartService:ShoppingCartService) { 
+  constructor(private cartService: ShoppingCartService) {
     // console.log(`inside product card comp -- ${this.product}`)
   }
 

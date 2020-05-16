@@ -7,5 +7,5 @@ import { ShoppingCart } from '../../../shared/models/shopping-cart';
   styleUrls: ['./shopping-cart-summary.component.css']
 })
 export class ShoppingCartSummaryComponent {
-  @Input('cart') cart:ShoppingCart
+  @Input('cart') cart: ShoppingCart;
 }

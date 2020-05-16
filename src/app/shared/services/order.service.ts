@@ -7,21 +7,21 @@ import { ShoppingCartService } from './shopping-cart.service';
 })
 export class OrderService {
 
-  constructor(private db:AngularFireDatabase, private shoppingCartService:ShoppingCartService) { }
+  constructor(private db: AngularFireDatabase, private shoppingCartService: ShoppingCartService) { }
 
-  storeOrder(order:any){
-    let result = this.db.list('/orders').push(order)
-    this.shoppingCartService.clearCart()
-    return result
+  storeOrder(order: any){
+    const result = this.db.list('/orders').push(order);
+    this.shoppingCartService.clearCart();
+    return result;
   }
 
   getOrders(){
-    return this.db.list('/orders').valueChanges()
+    return this.db.list('/orders').valueChanges();
   }
 
-  getOrdersByUser(userId:string){
-    return this.db.list('/orders', (query)=> {
-      return query.orderByChild('userId').equalTo(userId)
-    })
+  getOrdersByUser(userId: string){
+    return this.db.list('/orders', (query) => {
+      return query.orderByChild('userId').equalTo(userId);
+    });
   }
 }

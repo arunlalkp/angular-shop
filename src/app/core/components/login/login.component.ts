@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//firebase
+// firebase
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
@@ -10,11 +10,11 @@ import { AuthService } from '../../../shared/services/auth.service';
 })
 export class LoginComponent  {
 
-  constructor(private auth:AuthService) {}
+  constructor(private auth: AuthService) {}
 
 
   login(){
-    this.auth.login()
+    this.auth.login();
   }
 
 

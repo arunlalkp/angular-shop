@@ -17,7 +17,7 @@ export class AdminAuthGuardService implements CanActivate {
   //       return this.userService.get(user.uid);
   //     })
   //   ).subscribe(x => {
-      
+
   //   })
   // }
   canActivate(): Observable<boolean> {

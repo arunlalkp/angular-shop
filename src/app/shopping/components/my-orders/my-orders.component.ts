@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent implements OnInit {
-  orders$:Observable<any>
+  orders$: Observable<any>;
 
   constructor(
-    authService:AuthService,
-    orderService:OrderService) {
+    authService: AuthService,
+    orderService: OrderService) {
     this.orders$ = authService.user$
-    .pipe(switchMap(user => orderService.getOrdersByUser(user.uid).valueChanges() ))
+    .pipe(switchMap(user => orderService.getOrdersByUser(user.uid).valueChanges() ));
    }
 
   ngOnInit(): void {

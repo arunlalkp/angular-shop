@@ -12,31 +12,31 @@ import { MessagingService } from 'src/app/shared/services/messaging.service';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit  {
-  public isMenuCollapsed = true; //used to toggle navbar menu on mobile
+  public isMenuCollapsed = true; // used to toggle navbar menu on mobile
   appUser: AppUser;
-  cart$: Observable<ShoppingCart>  
+  cart$: Observable<ShoppingCart>;
 
   constructor(
-    private messagingService:MessagingService,
-    private auth:AuthService,
-    private shoppingCartService:ShoppingCartService
+    private messagingService: MessagingService,
+    private auth: AuthService,
+    private shoppingCartService: ShoppingCartService
     ) {
-    
+
 
   }
   async ngOnInit(){
     this.auth.appUser$.subscribe(appUser => {
-      this.appUser = appUser
-    })
+      this.appUser = appUser;
+    });
 
-    this.cart$ = (await this.shoppingCartService.getCart())
-    //firebase messaging
-    this.messagingService.requestPremission()
-    this.messagingService.listen() // has no result yet
+    this.cart$ = (await this.shoppingCartService.getCart());
+    // firebase messaging
+    this.messagingService.requestPremission();
+    this.messagingService.listen(); // has no result yet
   }
 
    logout(){
-    this.auth.logout()
+    this.auth.logout();
    }
 
 }

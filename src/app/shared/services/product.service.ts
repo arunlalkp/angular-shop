@@ -18,31 +18,31 @@ export class ProductService {
   }
 
   getAll(){
-    
-    return this.db.list<Product>('/products') //.valueChanges()
-      
+
+    return this.db.list<Product>('/products') // .valueChanges()
+
     .snapshotChanges()
       .pipe(
         map(changes => {
-          return changes.map(c => (Object.assign({}, c.payload.val(), {key:c.payload.key})))
+          return changes.map(c => (Object.assign({}, c.payload.val(), {key: c.payload.key})));
         })
       );
   }
 
-  
 
-  get(productId:string):Observable<any>{
-  
-    return this.db.object('/products/'+ productId).valueChanges()
+
+  get(productId: string): Observable<any>{
+
+    return this.db.object('/products/' + productId).valueChanges();
   }
 
   update(productId, product){
-    console.log(`update- ${productId}`)
-    return this.db.object('/products/' + productId).update(product)
+    console.log(`update- ${productId}`);
+    return this.db.object('/products/' + productId).update(product);
   }
 
   delete(productId) {
-    return this.db.object('/products/' + productId).remove()
+    return this.db.object('/products/' + productId).remove();
   }
-  
+
 }

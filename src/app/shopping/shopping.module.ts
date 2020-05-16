@@ -21,7 +21,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShoppingCartComponent,
-    ShippingFormComponent 
+    ShippingFormComponent
   ],
   imports: [
     SharedModule
