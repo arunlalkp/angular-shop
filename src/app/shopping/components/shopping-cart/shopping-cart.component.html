@@ -3,10 +3,10 @@
         <div class="card-body">
             <h4 class="card-title">Shopping Cart</h4>
 
-            <p>You have {{ cart.totalItemsCount }} items in your shopping cart <button *ngIf="cart._items.length"
+            <p>You have {{ cart.totalItemsCount }} items in your shopping cart <button *ngIf="cart.allItems.length"
                     (click)="clearCart()" class="btn btn-light btn-sm float-right">Clear Shopping Cart</button>
             </p>
-            <!-- <pre>{{ cart._items | json }}</pre> -->
+            <!-- <pre>{{ cart.allItems | json }}</pre> -->
             <table class="table">
                 <thead>
                     <tr>
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of cart._items">
+                    <tr *ngFor="let item of cart.allItems">
                         <td>
                             <div [style.backgroundImage]="'url('+ item.imageUrl + ')'" class="thumbnail"></div>
                         </td>
@@ -34,7 +34,7 @@
                         <th></th>
                         <th></th>
                         <th class="text-right">
-                            <a *ngIf="cart._items.length" routerLink="/check-out"
+                            <a *ngIf="cart.allItems.length" routerLink="/check-out"
                                 class="btn btn-success float-right">Checkout
                                 <strong>{{ cart.totalPrice | currency }}</strong> </a>
                         </th>

@@ -49,7 +49,6 @@ export class ShoppingCartService {
      * @BUG____________________________________________
      * @TODO ** BUG ** Two CartIDs are created on start
      * @BUG____________________________________________
-
      */
 
     // console.log(`get or create cart ID`)

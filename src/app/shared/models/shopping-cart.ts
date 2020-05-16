@@ -3,16 +3,20 @@ import { Product } from './product';
 
 export class ShoppingCart{
     items; // need to add here for avoiding compile time error, and this items refres to items in firebase data
-    _items: ShoppingCartItem[] = []; // push items to _items for easy accessing in templete - array data
+    allItems: ShoppingCartItem[] = []; // push items to allItems for easy accessing in templete - array data
 
     constructor(private itemsMap: { [productId: string]: ShoppingCartItem }){
         // console.log(this.itemsMap)
         this.itemsMap = itemsMap || {};
 
-        for (const productId in itemsMap){
+        for (const productId in itemsMap) {
+            if (itemsMap[productId]) {
             const item = itemsMap[productId];
             // console.log(item)
-            this._items.push(new ShoppingCartItem({...item, key: productId}));
+            this.allItems.push(
+                new ShoppingCartItem({ ...item, key: productId })
+            );
+            }
         }
     }
 
@@ -27,8 +31,10 @@ export class ShoppingCart{
 
     get totalPrice(){
         let sum = 0;
-        for (const productId in this._items){
-            sum += this._items[productId].totalPrice;
+        for (const productId in this.allItems){
+            if (this.allItems[productId]){
+                sum += this.allItems[productId].totalPrice;
+            }
         }
         return sum;
     }
@@ -36,7 +42,9 @@ export class ShoppingCart{
     get totalItemsCount(){
         let count = 0;
         for (const productId in this.itemsMap) {
-            count += this.itemsMap[productId].quantity;
+            if (this.itemsMap[productId].quantity){
+                count += this.itemsMap[productId].quantity;
+            }
         }
         return count;
 

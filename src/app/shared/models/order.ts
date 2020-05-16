@@ -7,7 +7,7 @@ export class Order {
     constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart){
         this.datePlaced = new Date().getTime();
 
-        this.items = shoppingCart._items.map(i => {
+        this.items = shoppingCart.allItems.map(i => {
             return {
                 product: {
                   title: i.title,
